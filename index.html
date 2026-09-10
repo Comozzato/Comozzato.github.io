@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wille Ferreira — Backend Developer</title>
+<meta name="description" content="Wille Ferreira, Desenvolvedor Backend PHP e Laravel. Portfólio com experiência, projetos e stack técnica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #101826;
+    --ink-soft: #4b5871;
+    --paper: #eeede7;
+    --paper-2: #e2dfd4;
+    --amber: #c97a1f;
+    --amber-bright: #e8a33d;
+    --teal: #4f8b83;
+    --white: #f6f5f1;
+    --border: #cfccc0;
+    --maxw: 760px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Archivo', system-ui, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--amber-bright);
+    outline-offset: 3px;
+  }
+
+  code, .mono {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- HERO ---------- */
+
+  .hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: 72px 0 64px;
+    background-image:
+      linear-gradient(rgba(246,245,241,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(246,245,241,0.045) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.85rem;
+    color: var(--amber-bright);
+    margin: 0 0 18px;
+    letter-spacing: 0.01em;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.1rem, 5vw, 3rem);
+    font-weight: 800;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero .role {
+    font-size: clamp(1.05rem, 2.6vw, 1.3rem);
+    color: #c7cbd6;
+    margin: 0 0 34px;
+    font-weight: 500;
+  }
+
+  .terminal {
+    background: #0a1019;
+    border: 1px solid #26314a;
+    padding: 22px 24px;
+    font-size: 0.92rem;
+    overflow-x: auto;
+  }
+
+  .terminal .req {
+    color: var(--teal);
+  }
+
+  .terminal pre {
+    margin: 12px 0 0;
+    white-space: pre-wrap;
+    color: #d7dae2;
+  }
+
+  .terminal .key { color: #8fb4e8; }
+  .terminal .str { color: #e3b869; }
+  .terminal .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1em;
+    background: var(--amber-bright);
+    vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  .hero-links a {
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 10px 18px;
+    border: 1px solid #3a4560;
+    color: var(--white);
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .hero-links a:hover {
+    border-color: var(--amber-bright);
+    background: rgba(232,163,61,0.08);
+  }
+
+  .hero-links a.primary {
+    background: var(--amber-bright);
+    color: var(--ink);
+    border-color: var(--amber-bright);
+  }
+
+  .hero-links a.primary:hover {
+    background: #f0b256;
+  }
+
+  /* ---------- SECTIONS ---------- */
+
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  section:last-of-type { border-bottom: none; }
+
+  .tag {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--amber);
+    margin: 0 0 12px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 20px;
+    letter-spacing: -0.01em;
+  }
+
+  p { margin: 0 0 16px; color: #23293a; }
+
+  .lede {
+    font-size: 1.05rem;
+    max-width: 62ch;
+  }
+
+  /* Stack spec sheet */
+  .spec {
+    border-top: 1px solid var(--border);
+  }
+
+  .spec-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 18px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+  }
+
+  .spec-row dt {
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+
+  .spec-row dd {
+    margin: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.88rem;
+    color: var(--ink);
+  }
+
+  /* Experience */
+  .job-head {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-bottom: 4px;
+  }
+
+  .job-title { font-weight: 700; font-size: 1.05rem; }
+
+  .job-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+
+  ul.bullets {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul.bullets li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 11px;
+    font-size: 0.96rem;
+    color: #23293a;
+  }
+
+  ul.bullets li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--amber);
+  }
+
+  ul.bullets b { color: var(--ink); background: rgba(232,163,61,0.22); padding: 0 3px; font-weight: 700; }
+
+  /* Projects */
+  .project {
+    border: 1px solid var(--border);
+    padding: 24px 26px;
+    background: var(--paper-2);
+    margin-bottom: 18px;
+  }
+
+  .project h3 {
+    margin: 0 0 6px;
+    font-size: 1.1rem;
+  }
+
+  .project .repo-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--teal);
+    text-decoration: none;
+    word-break: break-all;
+  }
+
+  .project .repo-link:hover { text-decoration: underline; }
+
+  .chips {
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chips li {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+
+  .other-projects {
+    margin-top: 4px;
+  }
+
+  .other-projects li {
+    margin-bottom: 10px;
+    font-size: 0.92rem;
+  }
+
+  .other-projects a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--teal);
+    text-decoration: none;
+  }
+
+  .other-projects a:hover { text-decoration: underline; }
+
+  /* Education */
+  .edu-title { font-weight: 700; }
+  .edu-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  /* Contact / footer */
+  footer {
+    padding: 48px 0 60px;
+  }
+
+  .contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+  }
+
+  .contact-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .contact-list span.label {
+    color: var(--ink-soft);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+  }
+
+  .contact-list a {
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .contact-list a:hover { color: var(--amber); }
+
+  .foot-note {
+    margin-top: 36px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 560px) {
+    .spec-row { grid-template-columns: 1fr; gap: 4px; }
+    .job-head { flex-direction: column; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cursor { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="hero-eyebrow mono">// backend_developer</p>
+    <h1>Wille Ferreira</h1>
+    <p class="role">Desenvolvedor Backend — PHP &amp; Laravel</p>
+
+    <div class="terminal mono" role="img" aria-label="Resposta de API simulada mostrando o perfil profissional de Wille Ferreira">
+      <span class="req">GET /wille-ferreira</span>
+      <pre id="jsonOut"></pre>
+    </div>
+
+    <div class="hero-links">
+      <a class="primary" href="mailto:dev.willeferreira@gmail.com">Enviar e-mail</a>
+      <a href="https://github.com/Comozzato" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/wille-ferreira-2240961a2/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="about">
+    <div class="wrap">
+      <p class="tag mono">// sobre</p>
+      <h2>Autonomia técnica, do problema ao deploy</h2>
+      <p class="lede">Mais de 4 anos como desenvolvedor backend responsável, sozinho, pela saúde técnica de um sistema em produção — do design de APIs à otimização de performance. Perfil autodidata, com estudo contínuo em Java e Go para ampliar repertório em arquitetura de sistemas.</p>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="wrap">
+      <p class="tag mono">// stack</p>
+      <h2>Tecnologias</h2>
+      <dl class="spec">
+        <div class="spec-row">
+          <dt>Linguagens</dt>
+          <dd>PHP 8+</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Frameworks</dt>
+          <dd>Laravel</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Banco / Cache</dt>
+          <dd>MySQL · PostgreSQL · Redis</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Cloud &amp; Storage</dt>
+          <dd>AWS S3 · Microsoft Azure</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Infraestrutura</dt>
+          <dd>Docker · Linux · Git</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Arquitetura</dt>
+          <dd>REST APIs · MVC · OOP · Clean Code · PHPUnit</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Em estudo</dt>
+          <dd>Java · Go</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <p class="tag mono">// experiência</p>
+      <h2>Experiência profissional</h2>
+
+      <div class="job-head">
+        <span class="job-title">Click Multiplataforma — Desenvolvedor Backend PHP/Laravel</span>
+      </div>
+      <p class="job-meta">Manaus, Brasil · Julho 2021 – Fevereiro 2026</p>
+
+      <ul class="bullets">
+        <li>Único desenvolvedor backend do time, responsável por sistema de inscrição de candidatos em concursos públicos com <b>milhares de inscrições</b> processadas.</li>
+        <li>Desenvolvimento, manutenção e integração de APIs REST, incluindo versionamento de endpoints.</li>
+        <li>Cache com Redis, reduzindo o tempo de resposta de requisições de <b>~5s para menos de 1s</b> em rotinas de alto volume.</li>
+        <li>Armazenamento e entrega de arquivos de mídia via AWS S3 e Azure, gerenciando <b>centenas de arquivos</b> — média de uma dezena por usuário cadastrado.</li>
+        <li>Otimização de consultas e processamento de grandes volumes de dados por operações em lote.</li>
+        <li>Testes automatizados com PHPUnit como parte do ciclo de desenvolvimento.</li>
+        <li>Manutenção de sistema crítico em produção por <b>mais de 4 anos sem interrupções severas</b>, mesmo em picos de acesso.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <p class="tag mono">// projetos</p>
+      <h2>Projetos</h2>
+
+      <div class="project">
+        <h3>Acompanhante</h3>
+        <a class="repo-link" href="https://github.com/Comozzato/acompanhante" target="_blank" rel="noopener">github.com/Comozzato/acompanhante</a>
+        <p style="margin-top:14px;">Sistema em Laravel com autenticação, upload e edição de imagem e vídeo, conversão de vídeo em diferentes resoluções e uma camada de cache para stories e feeds. Ambiente containerizado, com testes automatizados.</p>
+        <ul class="chips mono">
+          <li>[Laravel]</li>
+          <li>[Docker]</li>
+          <li>[PHPUnit]</li>
+        </ul>
+      </div>
+
+      <ul class="other-projects bullets">
+        <li><a href="https://github.com/Comozzato/cinetag-api" target="_blank" rel="noopener">cinetag-api</a> — mock de API para estudo.</li>
+        <li><a href="https://github.com/Comozzato/ChatBox" target="_blank" rel="noopener">ChatBox</a> — chatbot experimental para WhatsApp.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <p class="tag mono">// formação</p>
+      <h2>Formação</h2>
+      <p class="edu-title">Sistemas de Informação — Faculdade Metropolitana de Manaus (Fametro)</p>
+      <p class="edu-meta">2021 – 2023 (trancado); retomada prevista.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <p class="tag mono">// contato</p>
+    <h2>Vamos conversar</h2>
+    <ul class="contact-list">
+      <li><span class="label">email</span> <a href="mailto:dev.willeferreira@gmail.com">dev.willeferreira@gmail.com</a></li>
+      <li><span class="label">telefone</span> <a href="tel:+5592985066813">+55 (92) 98506-6813</a></li>
+      <li><span class="label">linkedin</span> <a href="https://www.linkedin.com/in/wille-ferreira-2240961a2/" target="_blank" rel="noopener">wille-ferreira-2240961a2</a></li>
+      <li><span class="label">github</span> <a href="https://github.com/Comozzato" target="_blank" rel="noopener">Comozzato</a></li>
+      <li><span class="label">local</span> <span>Manaus, AM — remoto</span></li>
+    </ul>
+    <p class="foot-note">// disponível para posições backend remotas</p>
+  </div>
+</footer>
+
+<script>
+  const data = [
+    ['role', '"Backend Developer"'],
+    ['focus', '["PHP", "Laravel", "REST APIs"]'],
+    ['experience', '"4+ years"'],
+    ['highlight', '"Redis cache: ~5s → <1s response time"'],
+    ['availability', '"open to remote opportunities"']
+  ];
+
+  function renderStatic() {
+    let html = '{\n';
+    data.forEach(([k, v], i) => {
+      html += `  <span class="key">"${k}"</span>: <span class="str">${v}</span>${i < data.length - 1 ? ',' : ''}\n`;
+    });
+    html += '}';
+    document.getElementById('jsonOut').innerHTML = html;
+  }
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduceMotion) {
+    renderStatic();
+  } else {
+    const el = document.getElementById('jsonOut');
+    let lines = ['{'];
+    data.forEach(([k, v], i) => {
+      lines.push(`  "${k}": ${v}${i < data.length - 1 ? ',' : ''}`);
+    });
+    lines.push('}');
+
+    let out = '';
+    let li = 0, ci = 0;
+
+    function typeNext() {
+      if (li >= lines.length) {
+        renderStatic();
+        return;
+      }
+      const line = lines[li];
+      if (ci <= line.length) {
+        out = lines.slice(0, li).join('\n') + (li > 0 ? '\n' : '') + line.slice(0, ci);
+        el.textContent = out;
+        ci++;
+        setTimeout(typeNext, 8);
+      } else {
+        li++;
+        ci = 0;
+        out += '\n';
+        setTimeout(typeNext, 40);
+      }
+    }
+    typeNext();
+  }
+</script>
+
+</body>
+</html>
